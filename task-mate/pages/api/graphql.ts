@@ -36,21 +36,21 @@ const typeDefs = gql`
 
 const resolvers: IResolvers = {
   Query: {
-    tasks(parent, args, context) {
+    tasks(parent: any, args: any, context: any) {
       return [];
     },
-    task(parent, args, context) {
+    task(parent: any, args: any, context: any) {
       return null;
     },
   },
   Mutation: {
-    createTask(parent, args, context) {
+    createTask(parent: any, args: any, context: any) {
       return null;
     },
-    updateTask(parent, args, context) {
+    updateTask(parent: any, args: any, context: any) {
       return null;
     },
-    deleteTask(parent, args, context) {
+    deleteTask(parent: any, args: any, context: any) {
       return null;
     },
   },
