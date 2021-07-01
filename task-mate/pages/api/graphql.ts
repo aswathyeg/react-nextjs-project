@@ -1,4 +1,5 @@
 import { ApolloServer, gql, IResolvers } from 'apollo-server-micro';
+import mysql from 'serverless-mysql';
 
 const typeDefs = gql`
   enum TaskStatus {
@@ -56,7 +57,16 @@ const resolvers: IResolvers = {
   },
 };
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
+const db=mysql({
+  config:{
+    host:process.env.MYSQL_HOST,
+    user:process.env.MYSQL_USER,
+    database:process.env.MYSQL_DATABASE,
+    password:process.env.MYSQL_PASSWORD,
+  },
+});
+
+const apolloServer = new ApolloServer({ typeDefs, resolvers,context:{db} });
 
 export const config = {
   api: {
