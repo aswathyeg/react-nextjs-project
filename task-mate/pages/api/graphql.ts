@@ -35,23 +35,27 @@ const typeDefs = gql`
   }
 `;
 
-const resolvers: IResolvers = {
+interface ApolloContext{
+  db:mysql.ServerlessMysql;
+}
+
+const resolvers: IResolvers <any,ApolloContext>= {
   Query: {
-    tasks(parent: any, args: any, context: any) {
+    tasks(parent, args, context) {
       return [];
     },
-    task(parent: any, args: any, context: any) {
+    task(parent, args, context) {
       return null;
     },
   },
   Mutation: {
-    createTask(parent: any, args: any, context: any) {
+    createTask(parent, args, context) {
       return null;
     },
-    updateTask(parent: any, args: any, context: any) {
+    updateTask(parent, args, context) {
       return null;
     },
-    deleteTask(parent: any, args: any, context: any) {
+    deleteTask(parent, args, context) {
       return null;
     },
   },
